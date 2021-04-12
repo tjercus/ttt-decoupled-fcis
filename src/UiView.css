@@ -1,0 +1,50 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 3em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.board {
+  margin: 1em;
+}
+
+.tile {
+  height: 3em;
+  width: 3em;
+  border: 1px solid gray;
+}
+
+.tile:hover {
+  cursor: pointer;
+}
+
+#messages {
+  width: 50%;
+  height: 2em;
+  border: 1px solid lightgray;
+  text-align: center;
+}
+
+#messages li {
+  list-style: none;
+}
+
+.buttons {
+  display: flex;
+  margin: 1em;
+}
