@@ -11,13 +11,20 @@ export const moveValidEvt = createEventDefinition<{
   move: Move;
 }>()("MOVE_VALID_EVT");
 export const moveInvalidEvt = createEventDefinition<Move>()("MOVE_INVALID_EVT");
-export const boardCreatedEvt = createEventDefinition<Board>()(
-  "BOARD_CREATED_EVT"
+export const boardCreatedEvt = createEventDefinition<{
+  board: Board;
+  player: string;
+}>()("BOARD_CREATED_EVT");
+
+export const humanTurnDoneEvt = createEventDefinition<Board>()(
+  "HUMAN_TURN_DONE_EVT"
 );
 
-export const boardStoredEvt = createEventDefinition<Board>()(
-  "BOARD_STORED_EVT"
-);
+export const boardStoredEvt = createEventDefinition<{
+  board: Board;
+  player: string;
+}>()("BOARD_STORED_EVT");
+
 export const resetClickedEvt = createEventDefinition()("RESET_CLICKED_EVT");
 export const undoClickedEvt = createEventDefinition()("UNDO_CLICKED_EVT");
 

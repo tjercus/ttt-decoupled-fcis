@@ -42,13 +42,16 @@ MessagesController <- MoveInvalidEvt
 
 MoveController -> boardCreatedEvt
 
-StateController <- boardCreatedEvt
-
 StateController -> boardStoredEvt
+
+StateController <- boardCreatedEvt
+StateController <- resetClickedEvt
+StateController <- undoClickedEvt
 
 UiView -> resetClickedEvt
 
-StateController <- resetClickedEvt
+AiController <- humanTurnDoneEvt
+AiController -> boardCreatedEvt
 
 EventLoggingController <- * 
 

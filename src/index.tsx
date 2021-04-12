@@ -10,6 +10,7 @@ import MoveController from "./MoveController";
 import StateController from "./StateController";
 import UiController from "./UiController";
 import EventLoggingController from "./EventLoggingController";
+import AiController from "./AiController";
 
 // global bus
 const eventBus = new EventBus();
@@ -18,6 +19,7 @@ ReactDOM.render(
   <React.StrictMode>
     <BusProvider value={eventBus}>
       {/*services*/}
+      <AiController eventBus={eventBus} />
       <EventLoggingController eventBus={eventBus} />
       <ValidationController eventBus={eventBus} />
       <MoveController eventBus={eventBus} />

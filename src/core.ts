@@ -28,11 +28,8 @@ export const last = (xs: string | Array<any>) => xs[xs.length - 1];
 
 export const initialBoard: Board = [mr(0), mr(1), mr(2)];
 
-export const validateMove = (board: Board, move: Move): boolean => {
-  const tile = board[move.tile.rowIndex][move.tile.colIndex];
-  // TODO make a type 'occupiedTileValue' or '?'
-  return tile.value !== "x" && tile.value !== "o";
-};
+export const validateMove = (board: Board, move: Move): boolean =>
+  isFree(board[move.tile.rowIndex][move.tile.colIndex]);
 
 /**
  * currentBoard + move = newBoard
@@ -48,3 +45,19 @@ export const makeBoardBasedOnMove = (board: Board, move: Move): Board =>
 
 export const undoMove = (boards: Array<Board>): Array<Board> =>
   boards.length === 1 ? boards : boards.slice(0, -1);
+
+const isFree = (tile: Tile) => tile.value !== "x" && tile.value !== "o";
+
+const getFreeTiles = (board: Board): Array<Tile> =>
+  board.reduce((acc, curr) => acc.concat(curr.filter(isFree)));
+
+/**
+ * answer can include zero but not max itself
+ */
+const makeRandomInt = (max: number) => Math.floor(Math.random() * max);
+
+const getRandomTile = (tiles: Array<Tile>): Tile =>
+  tiles[makeRandomInt(tiles.length)];
+
+export const getRandomFreeTile = (board: Board): Tile =>
+  getRandomTile(getFreeTiles(board));

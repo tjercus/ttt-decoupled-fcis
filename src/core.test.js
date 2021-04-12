@@ -1,4 +1,9 @@
-import { initialBoard, makeBoardBasedOnMove, validateMove } from "./core";
+import {
+  initialBoard,
+  makeBoardBasedOnMove,
+  undoMove,
+  validateMove,
+} from "./core";
 
 describe("core", () => {
   describe("validateMove", () => {
@@ -41,4 +46,10 @@ describe("core", () => {
       expect(board[1][1]).toEqual({ colIndex: 1, rowIndex: 1, value: "x" });
     });
   });
+  // describe("undoMove", () => {
+  //   it("should undo the last move", () => {
+  //     const boards = [initialBoard, initialBoard];
+  //     expect(undoMove(boards)).toEqual(initialBoard);
+  //   });
+  // });
 });

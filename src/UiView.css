@@ -38,6 +38,7 @@ article {
   height: 2em;
   border: 1px solid lightgray;
   text-align: center;
+  padding: 1em;
 }
 
 #messages li {

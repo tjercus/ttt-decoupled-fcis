@@ -1,7 +1,7 @@
 import { FunctionComponent, useEffect } from "react";
 import { boardCreatedEvt, moveValidEvt } from "./events";
 import { EventBus } from "ts-bus";
-import { makeBoardBasedOnMove } from "./core";
+import { last, makeBoardBasedOnMove } from "./core";
 
 interface Props {
   eventBus: EventBus;
@@ -14,7 +14,9 @@ const MoveController: FunctionComponent<Props> = ({ eventBus }) => {
         event.payload.board,
         event.payload.move
       );
-      eventBus.publish(boardCreatedEvt(newBoard));
+      eventBus.publish(
+        boardCreatedEvt({ board: newBoard, player: event.payload.move.player })
+      );
     });
   }, []);
   return null; // React prefers null for no-render

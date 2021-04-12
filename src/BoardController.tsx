@@ -7,9 +7,9 @@ interface Props {
   board: Board;
   eventBus: EventBus;
 }
-
-const BoardController: FunctionComponent<Props> = ({ board, eventBus }) => {
-  return <BoardView board={board} eventBus={eventBus} />;
-};
+// TODO when not connected (no subscriptions to the eventBus), remove the Controller
+const BoardController: FunctionComponent<Props> = ({ board, eventBus }) => (
+  <BoardView board={board} eventBus={eventBus} />
+);
 
 export default BoardController;
