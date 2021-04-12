@@ -1,17 +1,30 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import { EventBus } from "ts-bus";
+import { BusProvider } from "ts-bus/react";
+//
+import "./index.css";
+//
+import ValidationController from "./ValidationController";
+import MoveController from "./MoveController";
+import StateController from "./StateController";
+import UiController from "./UiController";
+import EventLoggingController from "./EventLoggingController";
+
+// global bus
+const eventBus = new EventBus();
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BusProvider value={eventBus}>
+      {/*services*/}
+      <EventLoggingController eventBus={eventBus} />
+      <ValidationController eventBus={eventBus} />
+      <MoveController eventBus={eventBus} />
+      <StateController eventBus={eventBus} />
+      {/*UI*/}
+      <UiController eventBus={eventBus} />
+    </BusProvider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
