@@ -7,6 +7,7 @@ import {
 } from "./events";
 import { EventBus } from "ts-bus";
 import { initialBoard, last, undoMove } from "./core";
+import { Players } from "./Player";
 
 interface Props {
   eventBus: EventBus;
@@ -36,7 +37,7 @@ const StateController: FunctionComponent<Props> = ({ eventBus }) => {
     return eventBus.subscribe(resetClickedEvt, (event) => {
       state = { ...state, boards: [...state.boards, initialBoard] };
       eventBus.publish(
-        boardStoredEvt({ board: last(state.boards), player: "x" })
+        boardStoredEvt({ board: last(state.boards), player: Players.Human })
       ); // TODO constant
     });
   }, []);
@@ -48,7 +49,7 @@ const StateController: FunctionComponent<Props> = ({ eventBus }) => {
         boards: undoMove(state.boards),
       };
       eventBus.publish(
-        boardStoredEvt({ board: last(state.boards), player: "x" })
+        boardStoredEvt({ board: last(state.boards), player: Players.Human })
       );
     });
   }, []);

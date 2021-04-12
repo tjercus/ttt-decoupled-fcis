@@ -1,16 +1,12 @@
-import {
-  initialBoard,
-  makeBoardBasedOnMove,
-  undoMove,
-  validateMove,
-} from "./core";
+import { initialBoard, makeBoardBasedOnMove, validateMove } from "./core";
+import { Players } from "./Player";
 
 describe("core", () => {
   describe("validateMove", () => {
     it("should validate true on unused tile", () => {
       const board = initialBoard;
       const move = {
-        player: "x",
+        player: Players.Human,
         tile: {
           colIndex: 1,
           rowIndex: 1,
@@ -21,7 +17,7 @@ describe("core", () => {
     });
     it("should validate false when moving on a used tile", () => {
       const move = {
-        player: "x",
+        player: Players.Human,
         tile: {
           colIndex: 1,
           rowIndex: 1,
@@ -35,7 +31,7 @@ describe("core", () => {
   describe("makeBoardBasedOnMove", () => {
     it("should make a board based on a move", () => {
       const move = {
-        player: "x",
+        player: Players.Human,
         tile: {
           colIndex: 1,
           rowIndex: 1,
@@ -43,7 +39,11 @@ describe("core", () => {
         },
       };
       const board = makeBoardBasedOnMove(initialBoard, move);
-      expect(board[1][1]).toEqual({ colIndex: 1, rowIndex: 1, value: "x" });
+      expect(board[1][1]).toEqual({
+        colIndex: 1,
+        rowIndex: 1,
+        value: Players.Human,
+      });
     });
   });
   // describe("undoMove", () => {

@@ -4,6 +4,7 @@ import { EventBus } from "ts-bus";
 import UiView from "./UiView";
 import { initialBoard } from "./core";
 import { boardStoredEvt, humanTurnDoneEvt } from "./events";
+import { Players } from "./Player";
 
 interface Props {
   eventBus: EventBus;
@@ -22,7 +23,7 @@ const UiController: FunctionComponent<Props> = ({ eventBus }) => {
       //   ? setBoard(event.payload)
       //   : console.log("cache hit, old board", event.payload, board);
       setBoard(event.payload.board);
-      if (event.payload.player === "x") {
+      if (event.payload.player === Players.Human) {
         eventBus.publish(humanTurnDoneEvt(event.payload.board));
       }
     });

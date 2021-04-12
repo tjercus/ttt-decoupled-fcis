@@ -3,6 +3,7 @@ import Move from "./Move";
 import TileValues from "./TileValues";
 import Row from "./Row";
 import Tile from "./Tile";
+import { Players } from "./Player";
 
 // makeTile
 const mt = (ri: number, ci: number, va: TileValues): Tile => ({
@@ -46,13 +47,13 @@ export const makeBoardBasedOnMove = (board: Board, move: Move): Board =>
 export const undoMove = (boards: Array<Board>): Array<Board> =>
   boards.length === 1 ? boards : boards.slice(0, -1);
 
-const isFree = (tile: Tile) => tile.value !== "x" && tile.value !== "o";
-
+const isFree = (tile: Tile) =>
+  tile.value !== Players.Human && tile.value !== Players.Ai;
 const getFreeTiles = (board: Board): Array<Tile> =>
   board.reduce((acc, curr) => acc.concat(curr.filter(isFree)));
 
 /**
- * answer can include zero but not max itself
+ * answer can include zero but not max itself [0 ... (max - 1)]
  */
 const makeRandomInt = (max: number) => Math.floor(Math.random() * max);
 

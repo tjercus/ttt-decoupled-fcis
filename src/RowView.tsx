@@ -3,6 +3,7 @@ import Row from "./Row";
 import { tileClickedEvt } from "./events";
 import { EventBus } from "ts-bus";
 import Board from "./Board";
+import { Players } from "./Player";
 
 interface Props {
   board: Board;
@@ -23,11 +24,10 @@ const RowView: FunctionComponent<Props> = ({
         className={"tile"}
         id={`${rowIndex}-${colIndex}`}
         key={`${rowIndex}-${colIndex}`}
-        onClick={
-          () =>
-            eventBus.publish(
-              tileClickedEvt({ board, move: { tile, player: "x" } })
-            ) // TODO no hardcoded player
+        onClick={() =>
+          eventBus.publish(
+            tileClickedEvt({ board, move: { tile, player: Players.Human } })
+          )
         }
       >
         {tile.value}
