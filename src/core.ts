@@ -44,6 +44,9 @@ export const makeBoardBasedOnMove = (board: Board, move: Move): Board =>
     )
   );
 
+/**
+ * Undo by removing the latest board from the history
+ */
 export const undoMove = (boards: Array<Board>): Array<Board> =>
   boards.length === 1 ? boards : boards.slice(0, -1);
 
@@ -53,7 +56,7 @@ const getFreeTiles = (board: Board): Array<Tile> =>
   board.reduce((acc, curr) => acc.concat(curr.filter(isFree)));
 
 /**
- * answer can include zero but not max itself [0 ... (max - 1)]
+ * answer can include zero but not max itself [0 .. (max - 1)]
  */
 const makeRandomInt = (max: number) => Math.floor(Math.random() * max);
 

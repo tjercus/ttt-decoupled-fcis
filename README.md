@@ -28,7 +28,7 @@ diagram work may help with this.
 
 ## Events
 
-TODO: decide if the StateController should be a fork in the process or a chain in the process
+TODO: decide if the HistoryController should be a fork in the process or a chain in the process
 
 RowView -> tileClickedEvt
 
@@ -42,11 +42,11 @@ MessagesController <- MoveInvalidEvt
 
 MoveController -> boardCreatedEvt
 
-StateController -> boardStoredEvt
+HistoryController -> boardStoredEvt
 
-StateController <- boardCreatedEvt
-StateController <- resetClickedEvt
-StateController <- undoClickedEvt
+HistoryController <- boardCreatedEvt
+HistoryController <- resetClickedEvt
+HistoryController <- undoClickedEvt
 
 UiView -> resetClickedEvt
 

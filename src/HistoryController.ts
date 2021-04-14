@@ -13,10 +13,10 @@ interface Props {
   eventBus: EventBus;
 }
 
-const StateController: FunctionComponent<Props> = ({ eventBus }) => {
+const HistoryController: FunctionComponent<Props> = ({ eventBus }) => {
+  // note I'm not using React state since this component never re-renders
   let state = {
     boards: [initialBoard],
-    thereIsAWinner: false as boolean, // TODO proper name, do we need this?
   };
 
   useEffect(() => {
@@ -38,7 +38,7 @@ const StateController: FunctionComponent<Props> = ({ eventBus }) => {
       state = { ...state, boards: [...state.boards, initialBoard] };
       eventBus.publish(
         boardStoredEvt({ board: last(state.boards), player: Players.Human })
-      ); // TODO constant
+      );
     });
   }, []);
 
@@ -57,4 +57,4 @@ const StateController: FunctionComponent<Props> = ({ eventBus }) => {
   return null; // React prefers null for a no-render
 };
 
-export default StateController;
+export default HistoryController;

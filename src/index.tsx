@@ -7,7 +7,7 @@ import "./index.css";
 //
 import ValidationController from "./ValidationController";
 import MoveController from "./MoveController";
-import StateController from "./StateController";
+import HistoryController from "./HistoryController";
 import UiController from "./UiController";
 import EventLoggingController from "./EventLoggingController";
 import AiController from "./AiController";
@@ -23,7 +23,7 @@ ReactDOM.render(
       <EventLoggingController eventBus={eventBus} />
       <ValidationController eventBus={eventBus} />
       <MoveController eventBus={eventBus} />
-      <StateController eventBus={eventBus} />
+      <HistoryController eventBus={eventBus} />
       {/*UI*/}
       <UiController eventBus={eventBus} />
     </BusProvider>
