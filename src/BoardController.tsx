@@ -1,6 +1,6 @@
-import BoardView from "./BoardView";
+import BoardView from "./ui/BoardView";
 import { FunctionComponent } from "react";
-import Board from "./Board";
+import Board from "./model/Board";
 import { EventBus } from "ts-bus";
 
 interface Props {

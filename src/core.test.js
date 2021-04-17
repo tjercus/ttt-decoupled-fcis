@@ -1,5 +1,12 @@
-import { initialBoard, makeBoardBasedOnMove, validateMove } from "./core";
-import { Players } from "./Player";
+import {
+  initialBoard,
+  isThereAWinner,
+  makeBoardBasedOnMove,
+  mr,
+  mt,
+  validateMove,
+} from "./core";
+import { Players } from "./model/Player";
 
 describe("core", () => {
   describe("validateMove", () => {
@@ -52,4 +59,41 @@ describe("core", () => {
   //     expect(undoMove(boards)).toEqual(initialBoard);
   //   });
   // });
+  describe("isWinner", () => {
+    it("should detect NO winner on empty board", () => {
+      expect(isThereAWinner(initialBoard)).toEqual(false);
+    });
+    it("should detect a winner on three horizontal", () => {
+      const board = [
+        mr(0),
+        mr(1),
+        [mt(2, 0, "x"), mt(2, 1, "x"), mt(2, 2, "x")],
+      ];
+      expect(isThereAWinner(board)).toEqual(true);
+    });
+    it("should detect NO winner on two horizontal", () => {
+      const board = [
+        mr(0),
+        mr(1),
+        [mt(2, 0, "_"), mt(2, 1, "x"), mt(2, 2, "x")],
+      ];
+      expect(isThereAWinner(board)).toEqual(false);
+    });
+    it("should detect a winner on three vertical", () => {
+      const board = [
+        [mt(0, 0, "_"), mt(0, 1, "x"), mt(0, 2, "_")],
+        [mt(1, 0, "_"), mt(1, 1, "x"), mt(1, 2, "_")],
+        [mt(2, 0, "_"), mt(2, 1, "x"), mt(2, 2, "_")],
+      ];
+      expect(isThereAWinner(board)).toEqual(true);
+    });
+    it("should detect a winner on three diagonal", () => {
+      const board = [
+        [mt(0, 0, "x"), mt(0, 1, "_"), mt(0, 2, "_")],
+        [mt(1, 0, "_"), mt(1, 1, "x"), mt(1, 2, "_")],
+        [mt(2, 0, "_"), mt(2, 1, "_"), mt(2, 2, "x")],
+      ];
+      expect(isThereAWinner(board)).toEqual(true);
+    });
+  });
 });

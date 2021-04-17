@@ -1,10 +1,10 @@
 import { FunctionComponent } from "react";
 import "./UiView.css";
-import Board from "./Board";
-import BoardController from "./BoardController";
+import Board from "../model/Board";
+import BoardController from "../BoardController";
 import { EventBus } from "ts-bus";
-import { resetClickedEvt, undoClickedEvt } from "./events";
-import MessagesController from "./MessagesController";
+import { resetClickedEvt, undoClickedEvt } from "../events";
+import MessagesController from "../MessagesController";
 
 interface Props {
   eventBus: EventBus;
@@ -17,7 +17,8 @@ const UiView: FunctionComponent<Props> = ({ board, eventBus }) => {
       <header className="App-header">
         <h1>Tic Tac Toe</h1>
         <p>
-          with `functional core with a decoupled imperative shell` architecture
+          using a `functional core with a decoupled imperative shell`
+          architecture
         </p>
       </header>
       <article>

@@ -2,9 +2,9 @@ import { FunctionComponent, useEffect, useState } from "react";
 import { EventBus } from "ts-bus";
 //
 import UiView from "./UiView";
-import { initialBoard } from "./core";
-import { boardStoredEvt, humanTurnDoneEvt } from "./events";
-import { Players } from "./Player";
+import { initialBoard } from "../core";
+import { boardStoredEvt, humanTurnDoneEvt } from "../events";
+import { Players } from "../model/Player";
 
 interface Props {
   eventBus: EventBus;
@@ -19,12 +19,14 @@ const UiController: FunctionComponent<Props> = ({ eventBus }) => {
   useEffect(() => {
     // listen to new board when move was made
     return eventBus.subscribe(boardStoredEvt, (event) => {
-      // board !== event.payload
-      //   ? setBoard(event.payload)
-      //   : console.log("cache hit, old board", event.payload, board);
       setBoard(event.payload.board);
       if (event.payload.player === Players.Human) {
         eventBus.publish(humanTurnDoneEvt(event.payload.board));
+      } else {
+        // TODO decide if winner should be decided from here (not here exactly)
+        // perhaps UiController should listen to a turnDoneEvent (after human or ai move)
+        //  and then re-render instead of subscribing to boardStoredEvent
+        //   then a 'WinnerController' should subscribe to boardStoredEvent
       }
     });
   }, []);

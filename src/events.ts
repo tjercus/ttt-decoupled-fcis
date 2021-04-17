@@ -1,6 +1,6 @@
 import { createEventDefinition } from "ts-bus";
-import Move from "./Move";
-import Board from "./Board";
+import Move from "./model/Move";
+import Board from "./model/Board";
 
 export const tileClickedEvt = createEventDefinition<{
   board: Board;
@@ -27,6 +27,10 @@ export const boardStoredEvt = createEventDefinition<{
 
 export const resetClickedEvt = createEventDefinition()("RESET_CLICKED_EVT");
 export const undoClickedEvt = createEventDefinition()("UNDO_CLICKED_EVT");
+
+export const thereIsAWinnerEvt = createEventDefinition()(
+  "THERE_IS_A_WINNER_EVT"
+);
 
 // Union type to discriminate on
 // export type EventTypes = "TILE_CLICKED_EVT";

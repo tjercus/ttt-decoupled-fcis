@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import Board from "./Board";
+import Board from "../model/Board";
 import RowView from "./RowView";
 import { EventBus } from "ts-bus";
 

@@ -8,9 +8,10 @@ import "./index.css";
 import ValidationController from "./ValidationController";
 import MoveController from "./MoveController";
 import HistoryController from "./HistoryController";
-import UiController from "./UiController";
+import UiController from "./ui/UiController";
 import EventLoggingController from "./EventLoggingController";
 import AiController from "./AiController";
+import WinnerController from "./WinnerController";
 
 // global bus
 const eventBus = new EventBus();
@@ -24,6 +25,7 @@ ReactDOM.render(
       <ValidationController eventBus={eventBus} />
       <MoveController eventBus={eventBus} />
       <HistoryController eventBus={eventBus} />
+      <WinnerController eventBus={eventBus} />
       {/*UI*/}
       <UiController eventBus={eventBus} />
     </BusProvider>

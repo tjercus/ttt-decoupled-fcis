@@ -1,7 +1,7 @@
 import { FunctionComponent, useEffect } from "react";
 import { boardCreatedEvt, moveValidEvt } from "./events";
 import { EventBus } from "ts-bus";
-import { last, makeBoardBasedOnMove } from "./core";
+import { makeBoardBasedOnMove } from "./core";
 
 interface Props {
   eventBus: EventBus;

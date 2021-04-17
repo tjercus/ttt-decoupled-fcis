@@ -6,8 +6,8 @@ import {
   undoClickedEvt,
 } from "./events";
 import { EventBus } from "ts-bus";
-import { initialBoard, last, undoMove } from "./core";
-import { Players } from "./Player";
+import { initialBoard, isThereAWinner, last, undoMove } from "./core";
+import { Players } from "./model/Player";
 
 interface Props {
   eventBus: EventBus;
@@ -21,6 +21,11 @@ const HistoryController: FunctionComponent<Props> = ({ eventBus }) => {
 
   useEffect(() => {
     return eventBus.subscribe(boardCreatedEvt, (event) => {
+      // TODO remove temp code
+      // if (isThereAWinner(event.payload.board)) {
+      //   alert("we have a winner");
+      // }
+
       // write board to list of boards (for undo/redo)
       state = { ...state, boards: [...state.boards, event.payload.board] };
       // propagate event that a new board was stored

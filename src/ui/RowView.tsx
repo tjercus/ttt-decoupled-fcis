@@ -1,9 +1,9 @@
 import { FunctionComponent } from "react";
-import Row from "./Row";
-import { tileClickedEvt } from "./events";
+import Row from "../model/Row";
+import { tileClickedEvt } from "../events";
 import { EventBus } from "ts-bus";
-import Board from "./Board";
-import { Players } from "./Player";
+import Board from "../model/Board";
+import { Players } from "../model/Player";
 
 interface Props {
   board: Board;

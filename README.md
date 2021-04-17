@@ -39,6 +39,7 @@ ValidationController -> moveValidEvt | moveInvalidEvt
 MoveController <- moveValidEvt | moveInvalidEvt
 
 MessagesController <- MoveInvalidEvt
+MessagesController <- thereIsAWinnerEvt
 
 MoveController -> boardCreatedEvt
 
@@ -52,6 +53,8 @@ UiView -> resetClickedEvt
 
 AiController <- humanTurnDoneEvt
 AiController -> boardCreatedEvt
+
+WinnerController -> thereIsAWinnerEvt
 
 EventLoggingController <- * 
 

@@ -2,7 +2,7 @@ import { FunctionComponent, useEffect } from "react";
 import { EventBus } from "ts-bus";
 import { boardCreatedEvt, humanTurnDoneEvt } from "./events";
 import { getRandomFreeTile, makeBoardBasedOnMove } from "./core";
-import { Players } from "./Player";
+import { Players } from "./model/Player";
 
 interface Props {
   eventBus: EventBus;
