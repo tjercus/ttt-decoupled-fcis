@@ -28,37 +28,37 @@ diagram work may help with this.
 
 ## Events
 
-RowView -> tileClickedEvt
+- RowView -> tileClickedEvt
 
-ValidationController <- tileClickedEvt
-ValidationController -> moveValidEvt | moveInvalidEvt
+- ValidationController <- tileClickedEvt
+- ValidationController -> moveValidEvt | moveInvalidEvt
 
-MoveController <- moveValidEvt | moveInvalidEvt
-MoveController -> boardCreatedEvt
+- MoveController <- moveValidEvt | moveInvalidEvt
+- MoveController -> boardCreatedEvt
 
-MessagesController <- MoveInvalidEvt
-MessagesController <- thereIsAWinnerEvt
-MessagesController <- resetClickedEvt
+- MessagesController <- MoveInvalidEvt
+- MessagesController <- thereIsAWinnerEvt
+- MessagesController <- resetClickedEvt
 
-HistoryController -> boardStoredEvt
-HistoryController <- boardCreatedEvt
-HistoryController <- resetClickedEvt
-HistoryController <- undoClickedEvt
+- HistoryController -> boardStoredEvt
+- HistoryController <- boardCreatedEvt
+- HistoryController <- resetClickedEvt
+- HistoryController <- undoClickedEvt
 
-UiView -> resetClickedEvt
+- UiView -> resetClickedEvt
 
-AiController <- thereIsAWinnerEvt
-AiController <- humanTurnDoneEvt
-AiController <- resetClickedEvt
-AiController -> boardCreatedEvt
+- AiController <- thereIsAWinnerEvt
+- AiController <- humanTurnDoneEvt
+- AiController <- resetClickedEvt
+- AiController -> boardCreatedEvt
 
-WinnerController -> thereIsAWinnerEvt
+- WinnerController -> thereIsAWinnerEvt
 
-BoardController <- resetClickedEvt
-BoardController <- undoClickedEvt
-BoardController <- thereIsAWinnerEvt
+- BoardController <- resetClickedEvt
+- BoardController <- undoClickedEvt
+- BoardController <- thereIsAWinnerEvt
 
-EventLoggingController <- * 
+- EventLoggingController <- * 
 
 ## Loose Ends ...
 
