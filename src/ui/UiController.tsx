@@ -22,14 +22,9 @@ const UiController: FunctionComponent<Props> = ({ eventBus }) => {
       setBoard(event.payload.board);
       if (event.payload.player === Players.Human) {
         eventBus.publish(humanTurnDoneEvt(event.payload.board));
-      } else {
-        // TODO decide if winner should be decided from here (not here exactly)
-        // perhaps UiController should listen to a turnDoneEvent (after human or ai move)
-        //  and then re-render instead of subscribing to boardStoredEvent
-        //   then a 'WinnerController' should subscribe to boardStoredEvent
       }
     });
-  }, []);
+  }, [eventBus]);
   return <UiView board={board} eventBus={eventBus} />;
 };
 

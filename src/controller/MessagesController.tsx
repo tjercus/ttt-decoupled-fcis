@@ -1,6 +1,11 @@
 import { FunctionComponent, useEffect, useState } from "react";
 import { EventBus } from "ts-bus";
-import { moveInvalidEvt, moveValidEvt, thereIsAWinnerEvt } from "./events";
+import {
+  moveInvalidEvt,
+  moveValidEvt,
+  resetClickedEvt,
+  thereIsAWinnerEvt,
+} from "../events";
 
 const TILE_WAS_TAKEN_MSG = "You cannot use a previously used tile";
 const THERE_IS_A_WINNER_MSG = "There is a winner!";
@@ -22,10 +27,11 @@ const MessagesController: FunctionComponent<Props> = ({ eventBus }) => {
 
     eventBus.subscribe(thereIsAWinnerEvt, () => {
       // @ts-ignore
-      setMessages([THERE_IS_A_WINNER_MSG]); // TODO block the next move and the clearing of the messages
-      alert(THERE_IS_A_WINNER_MSG);
+      setMessages([THERE_IS_A_WINNER_MSG]);
     });
-  }, []);
+
+    eventBus.subscribe(resetClickedEvt, (event) => setMessages([]));
+  }, [eventBus]);
 
   return messages?.length > 0 ? (
     <ul id={"messages"}>

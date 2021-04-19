@@ -8,6 +8,7 @@ import { Players } from "../model/Player";
 interface Props {
   board: Board;
   eventBus: EventBus;
+  readOnly: boolean;
   row: Row;
   rowIndex: number;
 }
@@ -15,6 +16,7 @@ interface Props {
 const RowView: FunctionComponent<Props> = ({
   board,
   eventBus,
+  readOnly,
   row,
   rowIndex,
 }) => (
@@ -25,9 +27,11 @@ const RowView: FunctionComponent<Props> = ({
         id={`${rowIndex}-${colIndex}`}
         key={`${rowIndex}-${colIndex}`}
         onClick={() =>
-          eventBus.publish(
-            tileClickedEvt({ board, move: { tile, player: Players.Human } })
-          )
+          !readOnly
+            ? eventBus.publish(
+                tileClickedEvt({ board, move: { tile, player: Players.Human } })
+              )
+            : ""
         }
       >
         {tile.value}

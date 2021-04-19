@@ -1,7 +1,7 @@
 import { FunctionComponent, useEffect } from "react";
 import { EventBus } from "ts-bus";
-import { boardStoredEvt, thereIsAWinnerEvt } from "./events";
-import { isThereAWinner } from "./core";
+import { boardStoredEvt, thereIsAWinnerEvt } from "../events";
+import { isThereAWinner } from "../core";
 
 interface Props {
   eventBus: EventBus;
@@ -15,7 +15,7 @@ const WinnerController: FunctionComponent<Props> = ({ eventBus }) => {
           eventBus.publish(thereIsAWinnerEvt());
         }
       }),
-    []
+    [eventBus]
   );
   return null; // React prefers null for no-render
 };

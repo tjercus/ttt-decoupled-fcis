@@ -5,13 +5,13 @@ import { BusProvider } from "ts-bus/react";
 //
 import "./index.css";
 //
-import ValidationController from "./ValidationController";
-import MoveController from "./MoveController";
-import HistoryController from "./HistoryController";
+import ValidationController from "./controller/ValidationController";
+import MoveController from "./controller/MoveController";
+import HistoryController from "./controller/HistoryController";
 import UiController from "./ui/UiController";
-import EventLoggingController from "./EventLoggingController";
-import AiController from "./AiController";
-import WinnerController from "./WinnerController";
+import EventLoggingController from "./controller/EventLoggingController";
+import AiController from "./controller/AiController";
+import WinnerController from "./controller/WinnerController";
 
 // global bus
 const eventBus = new EventBus();

@@ -1,7 +1,7 @@
 import { FunctionComponent, useEffect } from "react";
-import { moveInvalidEvt, moveValidEvt, tileClickedEvt } from "./events";
+import { moveInvalidEvt, moveValidEvt, tileClickedEvt } from "../events";
 import { EventBus } from "ts-bus";
-import { validateMove } from "./core";
+import { validateMove } from "../core";
 
 interface Props {
   eventBus: EventBus;
@@ -15,7 +15,7 @@ const ValidationController: FunctionComponent<Props> = ({ eventBus }) => {
         ? eventBus.publish(moveValidEvt({ board, move }))
         : eventBus.publish(moveInvalidEvt(move));
     });
-  }, []);
+  }, [eventBus]);
   return null; // React prefers null for no-render
 };
 

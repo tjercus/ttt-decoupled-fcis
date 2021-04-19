@@ -1,10 +1,10 @@
 import { FunctionComponent } from "react";
 import "./UiView.css";
 import Board from "../model/Board";
-import BoardController from "../BoardController";
+import BoardController from "./BoardController";
 import { EventBus } from "ts-bus";
 import { resetClickedEvt, undoClickedEvt } from "../events";
-import MessagesController from "../MessagesController";
+import MessagesController from "../controller/MessagesController";
 
 interface Props {
   eventBus: EventBus;

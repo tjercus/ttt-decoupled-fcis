@@ -1,6 +1,6 @@
 import Board from "./model/Board";
 import Move from "./model/Move";
-import TileValues, { TilePattern, WinnerPattern } from "./model/TileValues";
+import TileValues from "./model/TileValues";
 import Row from "./model/Row";
 import Tile from "./model/Tile";
 import { Players } from "./model/Player";
@@ -20,7 +20,7 @@ export const mr = (rowIndex: number): Row => [
 ];
 
 const tilesEqual = (t1: Tile, t2: Tile): boolean =>
-  t1.colIndex === t2.colIndex && t1.rowIndex === t2.rowIndex;
+  t1?.colIndex === t2?.colIndex && t1?.rowIndex === t2?.rowIndex;
 
 /**
  * return last item in an Array or string (Array of chars)
@@ -59,8 +59,8 @@ const isFreeTile = (tile: Tile) =>
 /**
  * Get a list of free tiles
  */
-const getFreeTiles = (board: Board): Array<Tile> =>
-  board.reduce((acc, curr) => acc.concat(curr.filter(isFreeTile)));
+export const getFreeTiles = (board: Board): Array<Tile> =>
+  board.reduce((acc, curr) => acc.concat(curr.filter(isFreeTile)), []);
 
 /**
  * answer can include zero but not max itself [0 .. (max - 1)]
@@ -111,8 +111,6 @@ export const isThereAWinner = (board: Board) => {
       isWinnerPattern(tilesToPattern(row))
     )
   );
-
-  console.log(diagonalWinner);
 
   return horizontalWinner || verticalWinner || diagonalWinner;
 };

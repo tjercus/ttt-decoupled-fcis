@@ -19,7 +19,7 @@ Allows you to focus on:
 
 ## Caveat and downsides
 
-This is not the simplest or most appropriate way to implement a tic tac toe game.
+This is not the simplest, or most appropriate way to implement a tic tac toe game.
 It demonstrates some architectural patterns and a specific implementation using the chosen libraries.
 This approach is probably more suited for larger and/or more complex systems.
 The main downside is that the decoupling comes at a price, it can be hard to follow the flow of events and
@@ -28,33 +28,35 @@ diagram work may help with this.
 
 ## Events
 
-TODO: decide if the HistoryController should be a fork in the process or a chain in the process
-
 RowView -> tileClickedEvt
 
 ValidationController <- tileClickedEvt
-
 ValidationController -> moveValidEvt | moveInvalidEvt
 
 MoveController <- moveValidEvt | moveInvalidEvt
+MoveController -> boardCreatedEvt
 
 MessagesController <- MoveInvalidEvt
 MessagesController <- thereIsAWinnerEvt
-
-MoveController -> boardCreatedEvt
+MessagesController <- resetClickedEvt
 
 HistoryController -> boardStoredEvt
-
 HistoryController <- boardCreatedEvt
 HistoryController <- resetClickedEvt
 HistoryController <- undoClickedEvt
 
 UiView -> resetClickedEvt
 
+AiController <- thereIsAWinnerEvt
 AiController <- humanTurnDoneEvt
+AiController <- resetClickedEvt
 AiController -> boardCreatedEvt
 
 WinnerController -> thereIsAWinnerEvt
+
+BoardController <- resetClickedEvt
+BoardController <- undoClickedEvt
+BoardController <- thereIsAWinnerEvt
 
 EventLoggingController <- * 
 

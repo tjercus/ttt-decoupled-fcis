@@ -6,9 +6,10 @@ import { EventBus } from "ts-bus";
 interface Props {
   board: Board;
   eventBus: EventBus;
+  readOnly: boolean;
 }
 
-const BoardView: FunctionComponent<Props> = ({ board, eventBus }) => {
+const BoardView: FunctionComponent<Props> = ({ board, eventBus, readOnly }) => {
   return (
     <table className={"board"}>
       <tbody>
@@ -17,6 +18,7 @@ const BoardView: FunctionComponent<Props> = ({ board, eventBus }) => {
             board={board}
             eventBus={eventBus}
             key={rowIndex}
+            readOnly={readOnly}
             row={row}
             rowIndex={rowIndex}
           />
