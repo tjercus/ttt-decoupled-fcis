@@ -19,7 +19,7 @@ Allows you to focus on:
 
 ## Caveat and downsides
 
-This is not the simplest, or most appropriate way to implement a tic tac toe game.
+This is not the simplest, or most appropriate way to implement a tic-tac-toe game.
 It demonstrates some architectural patterns and a specific implementation using the chosen libraries.
 This approach is probably more suited for larger and/or more complex systems.
 The main downside is that the decoupling comes at a price, it can be hard to follow the flow of events and
@@ -59,6 +59,11 @@ BoardController <- undoClickedEvt
 BoardController <- thereIsAWinnerEvt
 
 EventLoggingController <- * 
+
+## Loose Ends ...
+
+- Allow the Ai player to win
+- fix the test for core.undoMove
 
 ## This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

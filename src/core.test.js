@@ -5,6 +5,7 @@ import {
   makeBoardBasedOnMove,
   mr,
   mt,
+  undoMove,
   validateMove,
 } from "./core";
 import { Players } from "./model/Player";
@@ -35,7 +36,6 @@ describe("core", () => {
         [mt(1, 0, "x"), mt(1, 1, "x"), mt(1, 2, "x")],
         [mt(2, 0, "x"), mt(2, 1, "x"), mt(2, 2, "x")],
       ];
-      //console.log(getFreeTiles(board));
       expect(board.length).toBe(3);
       expect(getFreeTiles(board).length).toBe(0);
     });
